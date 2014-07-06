@@ -1,6 +1,12 @@
 Installation Instructions
 *************************
 
+To compile it you need audacious 3.4 and libmaclib 4.11
+
+Libmaclib you can download from https://sourceforge.net/projects/maclib/
+For easy installation process on ubuntu or debian please, copy macadd/* to root directory of maclib source and run mk.sh
+
+
 Please, use mk.sh to configure and make.
 
 After that you can copy files to its destination manualy or use these commands:
