@@ -220,7 +220,7 @@ char * relocatemem(char * filename)
 
 char * UpdateFileName(char * filename)
 {
-    char * tmpfilename;
+    char * tmpfilename = NULL;
 
 	if(vfs_file_test(filename,VFS_EXISTS)==FALSE)
     {
@@ -611,7 +611,7 @@ static bool_t playlist_load_cue (const char * cue_filename, VFSFile * file,
 
     CD cd;
  //   LoadCue (&cd,buffer,size);
-    LoadCue (&cd,text,size);
+    LoadCue (&cd,text,strlen(text));
 
 #if (1)
     Tuple ** tlist;
