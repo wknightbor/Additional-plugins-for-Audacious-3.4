@@ -3,6 +3,9 @@ Installation Instructions
 
 Please, use mk.sh to configure and make.
 
-After that you can copy './src/.libs/libautocue.so.0.0.0'
-    to '/usr/lib/audacious/Container/libautocue.so'
+After that you can copy files to its destination manualy or use these commands:
 
+sudo cp src/libape/.libs/libape.so.0.0.0 /usr/lib/audacious/Container/libape.so
+sudo cp src/autocue/.libs/libautocue.so.0.0.0 /usr/lib/audacious/Container/autocue.so
+
+That's all
