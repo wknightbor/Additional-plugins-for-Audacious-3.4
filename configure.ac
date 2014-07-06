@@ -2,20 +2,30 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([audacious-autocue-plugin], [0.0], [andrey@delfa.net])
-AM_INIT_AUTOMAKE([audacious-autocue-plugin], [0.0])
+AC_INIT([audacious-audacious-alt-plugins], [0.0], [andrey@delfa.net])
 AC_CONFIG_SRCDIR([config.h.in])
+AM_INIT_AUTOMAKE
 AC_CONFIG_HEADERS([config.h])
 AC_DEFINE_UNQUOTED([PACKAGE], "$PACKAGE_NAME", [Name of package])
 AC_DEFINE_UNQUOTED([VERSION], "$PACKAGE_VERSION", [Version number of package])
-LT_INIT
-PKG_CHECK_MODULES([DEPS], [glib-2.0 audacious])
+
+LT_INIT()
+PKG_CHECK_MODULES([DEPS], [glib-2.0 audacious >= 3.4],
+[AC_MSG_NOTICE([glib-2.0 and audacious 3.4 are found])],
+[AC_MSG_ERROR([*** glib-2.0 or audacious 3.4 not found - please install it first ***])]
+)
+
+PKG_CHECK_MODULES([MACLIB], [maclib >= 4.11.0],
+[AC_MSG_NOTICE([maclib 4.11 are found])],
+[AC_MSG_ERROR([*** maclib 4.11 not found - please install it first ***])]
+)
 CPPFLAGS="$CPPFLAGS"
 # -include config.h"
 LIBS="$LIBS"
 
 # Checks for programs.
 AC_PROG_CC_C99
+AC_PROG_CXX
 
 # Checks for header files.
 AC_CHECK_HEADERS([stdlib.h string.h glib.h])
@@ -29,5 +39,6 @@ AC_TYPE_UINT64_T
 AC_FUNC_MALLOC
 AC_FUNC_REALLOC
 
-AC_CONFIG_FILES(Makefile src/Makefile)
+AC_CONFIG_FILES(Makefile src/Makefile src/autocue/Makefile src/libape/Makefile)
+#AC_CONFIG_SUBDIRS([src])
 AC_OUTPUT()
