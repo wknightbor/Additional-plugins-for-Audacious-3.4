@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include/mac
+
+Name: libmaclib
+Description: MAC lib
+Version: 4.11.0
+Libs: -L${libdir} -lmaclib
+Cflags: -I${includedir}
