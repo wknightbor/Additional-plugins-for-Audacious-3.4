@@ -1,5 +1,7 @@
 readme
 
-It is cue sheet plugin for Audacious audio player. It is tested with Audacious 3.4.
+There are cue sheet plugin and apelib plugin for Audacious audio player 3.4.
 
-It is capable to read cue sheet from exact audio copy ...
+Cue sheet plugin is capable to read cue sheet from exact audio copy ...
+
+Apelib plugin is capable to read Monkey's audio formats. And it is easy to use on ARM32 plaform.
