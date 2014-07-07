@@ -14,11 +14,15 @@ PKG_CHECK_MODULES([DEPS], [glib-2.0 audacious >= 3.4],
 [AC_MSG_NOTICE([glib-2.0 and audacious 3.4 are found])],
 [AC_MSG_ERROR([*** glib-2.0 or audacious 3.4 not found - please install it first ***])]
 )
-
+have_maclib=no
 PKG_CHECK_MODULES([MACLIB], [maclib >= 4.11.0],
-[AC_MSG_NOTICE([maclib 4.11 are found])],
-[AC_MSG_ERROR([*** maclib 4.11 not found - please install it first ***])]
+	[AC_MSG_NOTICE([maclib 4.11 are found])
+	have_maclib=yes],
+[AC_MSG_NOTICE([*** maclib 4.11 not found - please install it first if you need to compile libape.so ***])]
 )
+
+AM_CONDITIONAL([CLIBAPE], [test x$have_maclib = xyes])
+
 CPPFLAGS="$CPPFLAGS"
 # -include config.h"
 LIBS="$LIBS"
