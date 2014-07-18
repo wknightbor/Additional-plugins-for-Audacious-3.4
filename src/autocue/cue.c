@@ -648,6 +648,14 @@ static bool_t playlist_load_cue (const char * cue_filename, VFSFile * file,
 			{
 				Tuple * tuple = tuple_copy(tlist[i]);
 				tuple_set_int (tuple, FIELD_TRACK_NUMBER, NULL, i+1);
+
+				if(cd.TrackNames[i]!=NULL)
+				tuple_set_str (tuple, FIELD_TITLE, NULL, cd.TrackNames[i]);
+				if(i < cd.PerformerNumber && cd.Performers[i]!=NULL)
+					tuple_set_str (tuple, FIELD_ARTIST, NULL, cd.Performers[i]);
+				if(cd.CDTitle!=NULL)
+					tuple_set_str (tuple, FIELD_ALBUM, NULL, cd.CDTitle);
+
 				index_append (tuples, tuple);
 				index_append (filenames, str_get(flist[i]));
 			}
